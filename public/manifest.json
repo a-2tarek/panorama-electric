@@ -1,0 +1,20 @@
+{
+  "short_name": "Panorama Electric",
+  "name": "Panorama Electric - Professional Electrical Services",
+  "icons": [
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#D9006C",
+  "background_color": "#ffffff"
+} 
