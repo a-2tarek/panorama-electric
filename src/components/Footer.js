@@ -16,15 +16,7 @@ const Footer = () => {
   };
 
   const footerSections = [
-    {
-      title: 'Services',
-      links: [
-        { label: 'Residential Electrical', action: () => scrollToSection('services') },
-        { label: 'Commercial Electrical', action: () => scrollToSection('services') },
-        { label: 'Solar Installation', action: () => scrollToSection('services') },
-        { label: 'Maintenance & Repair', action: () => scrollToSection('services') }
-      ]
-    },
+    
     {
       title: 'روابط سريعة',
       links: [
@@ -67,21 +59,8 @@ const Footer = () => {
               <span>Panorama Electric</span>
             </motion.div>
             <p>
-              خبراء في تصميم وتصنيع محولات التيار. الدقة والموثوقية والابتكار الذي يمكنك الوثوق به.
+              خبراء في تصميم وتصنيع محولات التيار 
             </p>
-            <div className="social-links">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  className="social-link"
-                  whileHover={{ scale: 1.2, y: -2 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <social.icon />
-                </motion.a>
-              ))}
-            </div>
           </motion.div>
 
           {footerSections.map((section, index) => (
@@ -114,9 +93,9 @@ const Footer = () => {
             transition={{ duration: 0.3 }}
           >
             <h3>Contact Info</h3>
-            <p><FaPhone /> (555) 123-4567</p>
+            <p><FaPhone /> (+20)1223196030</p>
             <p><FaEnvelope /> info@panoramaelectric.com</p>
-            <p><FaMapMarkerAlt /> 123 Electric Avenue, City, State 12345</p>
+            <p><FaMapMarkerAlt /> المنطقة الصناعية، قطعة 102، مدينة السادس من أكتوبر، الجيزة، مصر</p>
           </motion.div>
         </motion.div>
 
@@ -127,7 +106,7 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <p>&copy; 2024 Panorama Electric. All rights reserved.</p>
+          
         </motion.div>
       </div>
     </footer>

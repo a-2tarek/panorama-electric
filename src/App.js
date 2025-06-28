@@ -8,6 +8,8 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Catalog from './components/Catalog';
+import TouchSwitchCatalog from './components/TouchSwitchCatalog';
+import PhotocellCatalog from './components/PhotocellCatalog';
 import './App.css';
 
 function App() {
@@ -55,6 +57,8 @@ function App() {
           </div>
         } />
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/touch-switch-catalog" element={<TouchSwitchCatalog />} />
+        <Route path="/photocell-catalog" element={<PhotocellCatalog />} />
       </Routes>
     </Router>
   );

@@ -5,9 +5,7 @@ import './About.css';
 
 const About = () => {
   const stats = [
-    { number: '500+', label: 'Projects Completed' },
-    { number: '15+', label: 'Years Experience' },
-    { number: '24/7', label: 'Emergency Service' }
+    { number: '15+', label: 'سنة خبرة' },
   ];
 
   const containerVariants = {
@@ -40,14 +38,15 @@ const About = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '400px', gap: '2rem', flexDirection: 'row-reverse' }}
         >
-          <motion.div className="about-text" variants={itemVariants}>
-            <h2>About Panorama Electric</h2>
+          <motion.div className="about-text" variants={itemVariants} style={{ textAlign: 'right', flex: 1, direction: 'rtl', unicodeBidi: 'plaintext' }}>
+            <h2>من نحن - بانوراما الكتريك</h2>
             <p>
-              With over 15 years of experience in the electrical industry, Panorama Electric has been providing reliable, safe, and efficient electrical solutions to residential and commercial clients.
+              بخبرة 15 عامًا في مجال الكهرباء، تقدم شركة بانوراما الكتريك حلولاً كهربائية موثوقة وآمنة وفعالة للعملاء  .
             </p>
             <p>
-              Our team of licensed and certified electricians is committed to delivering exceptional service with the highest standards of safety and quality. We pride ourselves on our attention to detail, competitive pricing, and customer satisfaction.
+              يلتزم فريقنا من الفنيين  بتقديم خدمة استثنائية بأعلى معايير الجودة والسلامة. نحن نتميز باهتمامنا بالتفاصيل، وأسعارنا التنافسية، ورضا عملائنا.
             </p>
             
             <motion.div 
@@ -67,16 +66,8 @@ const About = () => {
               ))}
             </motion.div>
           </motion.div>
-
-          <motion.div className="about-image" variants={itemVariants}>
-            <motion.div 
-              className="image-placeholder"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <FaUsers className="about-icon" />
-              <p>Our Professional Team</p>
-            </motion.div>
+          <motion.div className="about-logo" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src="/logo.png" alt="Panorama Electric Logo" style={{ maxWidth: '250px', width: '100%', height: 'auto', borderRadius: '24px', boxShadow: '0 4px 16px rgba(0,0,0,0.10)' }} />
           </motion.div>
         </motion.div>
       </div>

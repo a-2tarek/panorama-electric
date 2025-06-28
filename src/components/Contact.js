@@ -18,7 +18,7 @@ const Contact = () => {
     {
       icon: FaPhone,
       title: 'الهاتف',
-      content: '(555) 123-4567'
+      content: '+201223196030'
     },
     {
       icon: FaEnvelope,
@@ -28,12 +28,12 @@ const Contact = () => {
     {
       icon: FaMapMarkerAlt,
       title: 'العنوان',
-      content: '123 شارع الكهرباء\nالمدينة، الدولة 12345'
+      content: "المنطقة الصناعية، قطعة 102، مدينة السادس من أكتوبر، الجيزة، مصر"
     },
     {
       icon: FaClock,
       title: 'ساعات العمل',
-      content: 'الاثنين-الجمعة: 8 صباحًا - 6 مساءً\nالطوارئ: 24/7'
+      content: 'السبت-الأربع: 8 صباحًا - 4 مساءً'
     }
   ];
 
@@ -94,8 +94,8 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2>Contact Us</h2>
-          <p>Get in touch for a free consultation and quote</p>
+          <h2>تواصل معنا</h2>
+          <p>للاستفسار أو الحصول على استشارة وعرض سعر مجاني، لا تتردد في التواصل معنا</p>
         </motion.div>
 
         <motion.div 
