@@ -20,12 +20,12 @@ import PhotocellCatalog from './components/PhotocellCatalog';
 import './App.css';
 
 // Layout component for pages with header, navbar and footer
-const Layout = ({ children, language = 'ar' }) => (
+const Layout = ({ children, language = 'en' }) => (
   <div className="App">
     <Header />
-    {language === 'en' ? <NavbarEn /> : <Navbar />}
+    {language === 'ar' ? <Navbar /> : <NavbarEn />}
     {children}
-    {language === 'en' ? <FooterEn /> : <Footer />}
+    {language === 'ar' ? <Footer /> : <FooterEn />}
   </div>
 );
 
@@ -63,33 +63,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Arabic Routes */}
+        {/* English Routes (Primary) */}
         <Route path="/" element={
-          <Layout language="ar">
-            <Hero />
-            <Services />
-            <About />
-            <Contact />
-          </Layout>
-        } />
-        <Route path="/catalog" element={
-          <Layout language="ar">
-            <Catalog />
-          </Layout>
-        } />
-        <Route path="/touch-switch-catalog" element={
-          <Layout language="ar">
-            <TouchSwitchCatalog />
-          </Layout>
-        } />
-        <Route path="/photocell-catalog" element={
-          <Layout language="ar">
-            <PhotocellCatalog />
-          </Layout>
-        } />
-        
-        {/* English Routes */}
-        <Route path="/en" element={
           <Layout language="en">
             <HeroEn />
             <ServicesEn />
@@ -97,18 +72,43 @@ function App() {
             <ContactEn />
           </Layout>
         } />
-        <Route path="/en/catalog" element={
+        <Route path="/catalog" element={
           <Layout language="en">
             <Catalog />
           </Layout>
         } />
-        <Route path="/en/touch-switch-catalog" element={
+        <Route path="/touch-switch-catalog" element={
           <Layout language="en">
             <TouchSwitchCatalog />
           </Layout>
         } />
-        <Route path="/en/photocell-catalog" element={
+        <Route path="/photocell-catalog" element={
           <Layout language="en">
+            <PhotocellCatalog />
+          </Layout>
+        } />
+        
+        {/* Arabic Routes */}
+        <Route path="/ar" element={
+          <Layout language="ar">
+            <Hero />
+            <Services />
+            <About />
+            <Contact />
+          </Layout>
+        } />
+        <Route path="/ar/catalog" element={
+          <Layout language="ar">
+            <Catalog />
+          </Layout>
+        } />
+        <Route path="/ar/touch-switch-catalog" element={
+          <Layout language="ar">
+            <TouchSwitchCatalog />
+          </Layout>
+        } />
+        <Route path="/ar/photocell-catalog" element={
+          <Layout language="ar">
             <PhotocellCatalog />
           </Layout>
         } />
