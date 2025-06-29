@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './Hero.css';
@@ -6,31 +6,22 @@ import './Hero.css';
 const HeroEn = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const sliderRef = useRef(null);
 
   const slides = [
     {
       id: 1,
-      image: '/catalog/ct-cover.png',
-      alt: 'Current Transformer',
+      image: '/slider/WhatsApp Image 2025-06-29 at 2.48.53 PM.jpeg',
+      alt: 'Panorama Electric Product 1',
       link: '/en/products/current-transformer'
     },
     {
       id: 2,
-      image: '/photocell/photocell.jpeg',
-      alt: 'Photo Cell',
+      image: '/slider/WhatsApp Image 2025-06-29 at 11.32.23 AM.jpeg',
+      alt: 'Panorama Electric Product 2',
       link: '/en/products/photo-cell'
-    },
-    {
-      id: 3,
-      image: '/catalog/1.png', // Using catalog image as placeholder for loadcenter
-      alt: 'Load Center',
-      link: '/en/products/load-center'
-    },
-    {
-      id: 4,
-      image: '/touch-swich/touch-swich.png',
-      alt: 'Touch Switch',
-      link: '/en/products/touch-switch'
     }
   ];
 
@@ -44,6 +35,33 @@ const HeroEn = () => {
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
+  };
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    }
+    if (isRightSwipe) {
+      prevSlide();
+    }
+
+    setTouchStart(null);
+    setTouchEnd(null);
   };
 
   useEffect(() => {
@@ -63,7 +81,13 @@ const HeroEn = () => {
     <section id="home" className="hero">
       <div className="hero-slider-container">
         <div className="desktop-slider">
-          <div className="owl-carousel owl-theme">
+          <div 
+            className="owl-carousel owl-theme"
+            ref={sliderRef}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div className="owl-stage-outer">
               <div className="owl-stage">
                 <AnimatePresence mode="wait">
@@ -82,7 +106,7 @@ const HeroEn = () => {
                           src={slides[currentSlide].image} 
                           alt={slides[currentSlide].alt}
                           onError={(e) => {
-                            e.target.src = '/catalog/ct-cover.png'; // fallback image
+                            e.target.src = '/slider/WhatsApp Image 2025-06-29 at 2.48.53 PM.jpeg'; // fallback image
                           }}
                         />
                       </a>
@@ -127,7 +151,12 @@ const HeroEn = () => {
         </div>
 
         <div className="mobile-slider">
-          <div className="owl-carousel owl-theme">
+          <div 
+            className="owl-carousel owl-theme"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div className="owl-stage-outer">
               <div className="owl-stage">
                 <AnimatePresence mode="wait">
@@ -146,7 +175,7 @@ const HeroEn = () => {
                           src={slides[currentSlide].image} 
                           alt={slides[currentSlide].alt}
                           onError={(e) => {
-                            e.target.src = '/catalog/ct-cover.png'; // fallback image
+                            e.target.src = '/slider/WhatsApp Image 2025-06-29 at 2.48.53 PM.jpeg'; // fallback image
                           }}
                         />
                       </a>

@@ -36,6 +36,11 @@
   border: 2px solid rgba(0, 0, 0, 0.1);
   background: white;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  touch-action: pan-y pinch-zoom;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .owl-stage-outer {
@@ -78,10 +83,11 @@
 
 .product-image img {
   width: 100%;
-  height: 300px;
-  object-fit: cover;
+  height: 250px;
+  object-fit: contain;
   object-position: center;
   transition: transform 0.3s ease;
+  background-color: #f8f9fa;
 }
 
 .product-image:hover img {
@@ -260,6 +266,8 @@
   
   .product-image img {
     height: 250px;
+    object-fit: contain;
+    background-color: #f8f9fa;
   }
   
   .product-content {
@@ -315,6 +323,8 @@
   
   .product-image img {
     height: 200px;
+    object-fit: contain;
+    background-color: #f8f9fa;
   }
   
   .product-name {

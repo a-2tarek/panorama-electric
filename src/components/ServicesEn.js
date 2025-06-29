@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './Services.css';
 
 const ServicesEn = () => {
   const [currentProduct, setCurrentProduct] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const sliderRef = useRef(null);
 
   const products = [
     {
@@ -22,7 +25,7 @@ const ServicesEn = () => {
       nameEn: 'Touch Switch',
       description: 'Smart touch switch for modern, easy and elegant lighting control. Provides smooth and sophisticated control experience with elegant design.',
       descriptionEn: 'Smart touch switch for modern, easy and elegant lighting control. Provides smooth and sophisticated control experience with elegant design.',
-      image: '/touch-swich/touch-swich.png',
+      image: '/touch-swich/WhatsApp Image 2025-06-29 at 4.14.46 PM.jpeg',
       catalogLink: 'https://mustedueg-my.sharepoint.com/:b:/g/personal/83605_must_edu_eg/EaR9xsuMLdNBt6bGmvNjCaQBCjLs-SEpoxUEVcdnx1NrBA?e=W4ojcF'
     },
     {
@@ -31,7 +34,7 @@ const ServicesEn = () => {
       nameEn: 'Photocell',
       description: 'Photocell for automatic lighting control and energy saving. Works based on ambient light levels for optimal operation.',
       descriptionEn: 'Photocell for automatic lighting control and energy saving. Works based on ambient light levels for optimal operation.',
-      image: '/photocell/photocell.jpeg',
+      image: '/photocell/WhatsApp Image 2025-06-29 at 4.08.51 PM.jpeg',
       catalogLink: 'https://mustedueg-my.sharepoint.com/:b:/g/personal/83605_must_edu_eg/Eb9YjRr_oDxAlFzxgJJ91aEB3HwciBAH4JebaeMfufSJ1w?e=HhkBSG'
     },
     {
@@ -40,7 +43,7 @@ const ServicesEn = () => {
       nameEn: 'Load Center',
       description: 'High-quality electrical distribution panels for safety and power distribution control. Designed to provide effective protection and monitoring of electrical systems.',
       descriptionEn: 'High-quality electrical distribution panels for safety and power distribution control. Designed to provide effective protection and monitoring of electrical systems.',
-      image: '/catalog/1.png',
+      image: '/slider/WhatsApp Image 2025-06-29 at 2.46.32 PM.jpeg',
       catalogLink: 'https://mustedueg-my.sharepoint.com/:b:/g/personal/83605_must_edu_eg/EWHEYZLs9EpHij3UUgWBodcBKuHzwIKWTM9AkNjJEdA9ig?e=myJcqO'
     }
   ];
@@ -57,6 +60,33 @@ const ServicesEn = () => {
     setCurrentProduct(index);
   };
 
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextProduct();
+    }
+    if (isRightSwipe) {
+      prevProduct();
+    }
+
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   return (
     <section id="services" className="services">
       <div className="container">
@@ -64,7 +94,13 @@ const ServicesEn = () => {
           <h2 className="products-title">Products</h2>
           
           <div className="products-slider">
-            <div className="owl-carousel owl-theme">
+            <div 
+              className="owl-carousel owl-theme"
+              ref={sliderRef}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               <div className="owl-stage-outer">
                 <div className="owl-stage">
                   <AnimatePresence mode="wait">
