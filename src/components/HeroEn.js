@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './Hero.css';
 
-const Hero = () => {
+const HeroEn = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -12,25 +12,25 @@ const Hero = () => {
       id: 1,
       image: '/catalog/ct-cover.png',
       alt: 'Current Transformer',
-      link: '/products/current-transformer'
+      link: '/en/products/current-transformer'
     },
     {
       id: 2,
       image: '/photocell/photocell.jpeg',
       alt: 'Photo Cell',
-      link: '/products/photo-cell'
+      link: '/en/products/photo-cell'
     },
     {
       id: 3,
-      image: '/catalog/1.png',
+      image: '/catalog/1.png', // Using catalog image as placeholder for loadcenter
       alt: 'Load Center',
-      link: '/products/load-center'
+      link: '/en/products/load-center'
     },
     {
       id: 4,
       image: '/touch-swich/touch-swich.png',
       alt: 'Touch Switch',
-      link: '/products/touch-switch'
+      link: '/en/products/touch-switch'
     }
   ];
 
@@ -194,4 +194,4 @@ const Hero = () => {
   );
 };
 
-export default Hero; 
+export default HeroEn; 

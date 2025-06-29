@@ -4,7 +4,7 @@ import { FaBars, FaTimes, FaChevronDown, FaSearch } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = () => {
+const NavbarEn = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -13,8 +13,8 @@ const Navbar = () => {
 
   const scrollToSection = (sectionId) => {
     // If we're not on the home page, navigate there first
-    if (location.pathname !== '/') {
-      navigate('/');
+    if (location.pathname !== '/en') {
+      navigate('/en');
       // Wait for navigation to complete, then scroll
       setTimeout(() => {
         const element = document.getElementById(sectionId);
@@ -39,16 +39,16 @@ const Navbar = () => {
   };
 
   const products = [
-    { id: 'current-transformer', label: 'Current Transformer', path: '/current-transformer-catalog' },
-    { id: 'photo-cell', label: 'Photo Cell', path: '/photo-cell-catalog' },
-    { id: 'load-center', label: 'Load Center', path: '/load-center-catalog' },
-    { id: 'touch-switch', label: 'Touch Switch', path: '/touch-switch-catalog' },
+    { id: 'current-transformer', label: 'Current Transformer', path: '/en/current-transformer-catalog' },
+    { id: 'photo-cell', label: 'Photo Cell', path: '/en/photo-cell-catalog' },
+    { id: 'load-center', label: 'Load Center', path: '/en/load-center-catalog' },
+    { id: 'touch-switch', label: 'Touch Switch', path: '/en/touch-switch-catalog' },
   ];
 
   const navItems = [
-    { id: 'home', label: 'الرئيسية', type: 'scroll' },
-    { id: 'about', label: 'من نحن', type: 'scroll' },
-    { id: 'contact', label: 'تواصل معنا', type: 'scroll' }
+    { id: 'home', label: 'Home', type: 'scroll' },
+    { id: 'about', label: 'About', type: 'scroll' },
+    { id: 'contact', label: 'Contact Us', type: 'scroll' }
   ];
 
   const handleNavClick = (item) => {
@@ -66,28 +66,7 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="nav-container">
-        {/* Search Bar - Left side for Arabic */}
-        <motion.div 
-          className="nav-search"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <form onSubmit={handleSearch} className="search-form">
-            <input
-              type="text"
-              placeholder="البحث..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="search-input"
-            />
-            <button type="submit" className="search-button">
-              <FaSearch />
-            </button>
-          </form>
-        </motion.div>
-
-        <ul className={`nav-menu rtl ${isOpen ? 'active' : ''}`}>
+        <ul className={`nav-menu ltr ${isOpen ? 'active' : ''}`}>
           {navItems.map((item) => (
             <motion.li 
               key={item.id} 
@@ -117,7 +96,7 @@ const Navbar = () => {
             onMouseLeave={() => setProductsDropdownOpen(false)}
           >
             <div className="nav-link dropdown-toggle">
-              المنتجات
+              Products
               <FaChevronDown className={`dropdown-icon ${productsDropdownOpen ? 'rotated' : ''}`} />
             </div>
             <motion.ul 
@@ -147,6 +126,27 @@ const Navbar = () => {
           </motion.li>
         </ul>
 
+        {/* Search Bar - Right side for English */}
+        <motion.div 
+          className="nav-search"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <form onSubmit={handleSearch} className="search-form">
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="search-input"
+            />
+            <button type="submit" className="search-button">
+              <FaSearch />
+            </button>
+          </form>
+        </motion.div>
+
         <motion.div 
           className="hamburger"
           onClick={() => setIsOpen(!isOpen)}
@@ -159,4 +159,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default NavbarEn; 

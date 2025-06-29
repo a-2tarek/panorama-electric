@@ -3,15 +3,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './Services.css';
 
-const Services = () => {
+const ServicesEn = () => {
   const [currentProduct, setCurrentProduct] = useState(0);
 
   const products = [
     {
       id: 1,
       name: 'Current Transformer',
-      nameEn: 'محول التيار',
-      description: 'لقياس التيارات العالية بدقة وأمان للتطبيقات الصناعية والتجارية. يوفر قياسات دقيقة للتيار الكهربائي مع حماية الأجهزة والمعدات.',
+      nameEn: 'Current Transformer',
+      description: 'High-precision current measurement for industrial and commercial applications. Provides accurate electrical current measurements with equipment protection.',
       descriptionEn: 'High-precision current measurement for industrial and commercial applications. Provides accurate electrical current measurements with equipment protection.',
       image: '/catalog/ct-cover.png',
       catalogLink: 'https://mustedueg-my.sharepoint.com/:b:/g/personal/83605_must_edu_eg/Efmzr03OustEp2AfyMXlsyEBmkjpedAedKFGsoZnIo_Prg?e=3bGzul'
@@ -19,8 +19,8 @@ const Services = () => {
     {
       id: 2,
       name: 'Touch Switch',
-      nameEn: 'مفتاح اللمس',
-      description: 'مفتاح لمس ذكي لتحكم عصري وسهل وأنيق في الإضاءة. يوفر تجربة تحكم سلسة ومتطورة مع تصميم أنيق يناسب جميع الأماكن.',
+      nameEn: 'Touch Switch',
+      description: 'Smart touch switch for modern, easy and elegant lighting control. Provides smooth and sophisticated control experience with elegant design.',
       descriptionEn: 'Smart touch switch for modern, easy and elegant lighting control. Provides smooth and sophisticated control experience with elegant design.',
       image: '/touch-swich/touch-swich.png',
       catalogLink: 'https://mustedueg-my.sharepoint.com/:b:/g/personal/83605_must_edu_eg/EaR9xsuMLdNBt6bGmvNjCaQBCjLs-SEpoxUEVcdnx1NrBA?e=W4ojcF'
@@ -28,8 +28,8 @@ const Services = () => {
     {
       id: 3,
       name: 'Photocell',
-      nameEn: 'الفوتوسيل',
-      description: 'فوتوسيل للتحكم التلقائي في الإضاءة وتوفير الطاقة. يعمل على أساس مستوى الإضاءة المحيطة لضمان التشغيل الأمثل.',
+      nameEn: 'Photocell',
+      description: 'Photocell for automatic lighting control and energy saving. Works based on ambient light levels for optimal operation.',
       descriptionEn: 'Photocell for automatic lighting control and energy saving. Works based on ambient light levels for optimal operation.',
       image: '/photocell/photocell.jpeg',
       catalogLink: 'https://mustedueg-my.sharepoint.com/:b:/g/personal/83605_must_edu_eg/Eb9YjRr_oDxAlFzxgJJ91aEB3HwciBAH4JebaeMfufSJ1w?e=HhkBSG'
@@ -37,8 +37,8 @@ const Services = () => {
     {
       id: 4,
       name: 'Load Center',
-      nameEn: 'مركز التحميل',
-      description: 'لوحات توزيع كهربائية عالية الجودة للأمان والتحكم في توزيع الطاقة. مصممة لتوفير الحماية والمراقبة الفعالة للأنظمة الكهربائية.',
+      nameEn: 'Load Center',
+      description: 'High-quality electrical distribution panels for safety and power distribution control. Designed to provide effective protection and monitoring of electrical systems.',
       descriptionEn: 'High-quality electrical distribution panels for safety and power distribution control. Designed to provide effective protection and monitoring of electrical systems.',
       image: '/catalog/1.png',
       catalogLink: 'https://mustedueg-my.sharepoint.com/:b:/g/personal/83605_must_edu_eg/EWHEYZLs9EpHij3UUgWBodcBKuHzwIKWTM9AkNjJEdA9ig?e=myJcqO'
@@ -61,7 +61,7 @@ const Services = () => {
     <section id="services" className="services">
       <div className="container">
         <div className="products-slider-container">
-          <h2 className="products-title">المنتجات</h2>
+          <h2 className="products-title">Products</h2>
           
           <div className="products-slider">
             <div className="owl-carousel owl-theme">
@@ -86,7 +86,7 @@ const Services = () => {
                             }}
                           />
                         </div>
-                        <div className="product-content">
+                        <div className="product-content ltr">
                           <h3 className="product-name">{products[currentProduct].nameEn}</h3>
                           <p className="product-description">{products[currentProduct].description}</p>
                           <a 
@@ -95,7 +95,7 @@ const Services = () => {
                             target="_blank" 
                             rel="noopener noreferrer"
                           >
-                            عرض الكتالوج
+                            View Catalog
                           </a>
                         </div>
                       </div>
@@ -143,4 +143,4 @@ const Services = () => {
   );
 };
 
-export default Services; 
+export default ServicesEn; 
